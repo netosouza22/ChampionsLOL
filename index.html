@@ -5,13 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Page</title>
-    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+
 </head>
 
 <body>
@@ -19,34 +16,79 @@
         <a class="navbar-brand text-white">Consult Your Champion</a>
         <div class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Champion" id="consultChamp">
-            <button class="btn btn-outline-success my-2 my-sm-0" onclick="returnChampion()">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" id="btnRem">Search</button>
         </div>
     </nav>
-    <div class="container"> 
-        <div class="row center-text" style="margin-top: 20px;" >
-            <h2>Champion Details</h2>
-        </div>
+    <div class="container">
         <div class="row">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Title</th>
-                        <th>description</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th><p id="nameC"></p></th>
-                        <th><p id="titleC"></p></th>
-                        <th><p id="aboutC"></p></th>
-                        <th><p id="partypeC"></p></th>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-lg-1 " >
+                <img id="champImg" style="width: 80px"  class="">
+            </div>
+            <div class="col-lg-3">
+                <h3 id="name"> </h3>
+                <div id="title"> </div>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-end">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Lore <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Skins</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
         </div>
-    </div>
+
+        <div class="row">
+            <section id="stats" class="col-lg-7">
+                <h3 class="text-center">Stats</h3>
+                <div class="row">
+                    <div class="col-lg-3">HP: <span id="hp"></span></div>
+                    <div class="col-lg-3">MPPerLevel: <span id="hpPerLevel"></span></div>
+                    <div class="col-lg-3">MP: <span id="mp"></span></div>
+                    <div class="col-lg-3">MPPerLevel: <span id="mpPerLevel"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">Armor: <span id="arm"></span></div>
+                    <div class="col-lg-3">ArmorPerLevel: <span id="armpl"></span></div>
+                    <div class="col-lg-3">SpellBlock: <span id="sb"></span></div>
+                    <div class="col-lg-3">SBPerLevel: <span id="sbpl"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">HpRegen: <span id="hpr"></span></div>
+                    <div class="col-lg-3">HPregenPerLevel: <span id="hprpl"></span></div>
+                    <div class="col-lg-3">MPRegen: <span id="mpr"></span></div>
+                    <div class="col-lg-3">MPRegenPerLevel: <span id="mprpl"></span></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">AD: <span id="ad"></span></div>
+                    <div class="col-lg-3">ADPerLevel: <span id="adpl"></span></div>
+                    <div class="col-lg-3">ASpeed: <span id="as"></span></div>
+                    <div class="col-lg-3">ASPerLevel: <span id="aspl"></span></div>
+                </div>
+            </section>
+            <section id="" class="col-lg-5  ">
+                <h3 class="text-center">Attributes</h3>
+                <canvas id="polar-chart" width="300" height="200"></canvas>
+            </section>
+         
+        </div>
+        <div class="row ">
+            <h3 class="center">Lore</h3>
+                <span id="lore" class="text-justify"></span>
+        </div> 
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </body>
 
 </html>
