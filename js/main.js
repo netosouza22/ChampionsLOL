@@ -28,11 +28,10 @@ function useDataChampion(value){
     let title = value.title;
     let lore = value.lore;
     //Stats
-    let stats = Object.values(value.stats);
+    var stats = Object.values(value.stats);
     let info = Object.values(value.info);
     startChart(info);
  
-    console.log(stats);
     $("#champImg").attr({
         src: `img/champion/championPic/${name}.png`,
     });
@@ -41,29 +40,76 @@ function useDataChampion(value){
 
     //stats
     $("#hp").text(stats[0]);
-    $("#hpPerLevel").text(stats[1]);
     $("#mp").text(stats[2]);
-    $("#mpPerLevel").text(stats[3]);
-
     $("#arm").text(stats[5]);
-    $("#armpl").text(stats[6]);
     $("#sb").text(stats[7]);
-    $("#sbpl").text(stats[8]);
-
     $("#hpr").text(stats[10]);
-    $("#hprpl").text(stats[11]);
     $("#mpr").text(stats[12]);
-    $("#mprl").text(stats[13]);
-
     $("#ad").text(stats[16]);
-    $("#adpl").text(stats[17]);
-    $("#as").text(stats[18]);
-    $("#aspl").text(stats[19]);
-    
+    $("#as").text(stats[19]);
+    $("#ms").text(stats[4]);
+    $("#ar").text(stats[9]);
+    calcPerLevel(stats);
+
     //Lore
     $("#lore").text(lore);
-
 }
+function calcPerLevel(stats){
+  var stats1 = stats;
+    
+  let hppl = stats[1];
+  let mppl = stats[3];
+  let armpl = stats[6];
+  let sbpl = stats[8];
+  let hprpl = stats[11];
+  let mprl = stats[13];
+  let adpl = stats[17];
+  let aspl = stats[18]/100;
+
+  $("#selectLevel").change(function (){
+    var level = $("#selectLevel option:selected").val();
+
+    var result1 = stats[0] + hppl * level;
+    var result2 = stats[2] + mppl * level;
+    var result3 = stats[5] + armpl * level;
+    var result4 = stats[7] + sbpl * level;
+    var result5 = stats[10] + hprpl * level;
+    var result6 = stats[12] + mprl * level;
+    var result7 = stats[16] + adpl * level;
+    var result8 = stats[18] + aspl * level;
+
+    $("#hp").text(result1);
+    $("#mp").text(result2);
+    $("#arm").text(result3);
+    $("#sb").text(result4);
+    $("#hpr").text(result5);
+    $("#mpr").text(result6);
+    $("#ad").text(result7);
+    $("#as").text(result8);
+  });
+
+
+  // let array = [hppl, mppl, armpl, sbpl, hprpl, mprl, adpl, aspl];
+  // console.log(array);
+  // return array;
+}
+
+
+
+// $("#selectLevel").change(calcPerLevel);
+
+// function calcPerLevel(){
+
+//   // var stats = getStats();
+
+//   var level = $("#selectLevel option:selected").val();
+//   // console.log(stats);
+//   console.log(level);
+
+
+
+// };
+
 function startChart(info){
     let attack = info[0];
     let defense = info[1];
